@@ -1,16 +1,15 @@
 // Show the directions before starting the game. Press the space bar to start. Once the user presses the space bar, the directions disappear and blank spaces for each letter in a random word will appear.
-var gameStart = "space";
+var gameStart = computerChoices;
 document.onkeyup = function(event) {
     gameStart = event.key;
+    var guessesLeft = 0;
+    var lettersGuessed = " ";
 }
 
 // Have the computer choose a random word for the user to guess, but hide the word with "_ _ _ _ _" until the corect letters are guessed.
 var computerChoices = ["LANNISTER", "DRAGONS", "WESTEROS", "STARK", "WHITE WALKERS", "THE MOUNTAIN", "BARATHEON", "KHALEESI", "NIGHT'S WATCH", "TARGARYEN"];
 
 // Tell the user to type in the guesses for each letter they think will be in the word.
-document.onkeyup = function(event) {
-    var userGuess = event.key;
-}
 
 // Keep a count for number of guesses remaining, and a record of which letters have been guessed.
 
