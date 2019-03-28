@@ -7,9 +7,20 @@
     </head>
     <body>
         <h1>Game of Thrones Word Guess</h1>
-        <p>Guess letters by typing them on your keyboard. You have 10 guesses to find the word.</p>
-        <p>Guess all the letters in the word to win!</p>
-        <p>Press the space bar to start!</p>
+        <p id="main-menu">
+            Guess letters by typing them on your keyboard. You have 10 guesses to find the word.
+            <br>
+            Guess all the letters in the word to win!
+            <br>
+            Press the space bar to start!
+            </p>
+            
+            <div id="game-content">
+                <div id="random-word"></div>
+                <p id="wins">Wins: </p>
+                <p id="guesses">Number of Guesses Left: </p>
+                <p id="letters">Letters Already Guessed: </p>
+                </div>
         <script src="assets/javascript/game.js"></script>
     </body>
 </html>
