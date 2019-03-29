@@ -11,9 +11,10 @@ function randomWord() {
     return wordList[Math.floor(Math.random() * wordList.length)];
 };
 
-newWord.textContent = randomWord(); 
-
 // Hide the word with "_ _ _ _ _" until the corect letters are guessed.
+for (var w = 0; w < randomWord().length; w++) {
+    document.write(" __ ")
+}
 
 // Keep a count for number of guesses remaining. 
 
