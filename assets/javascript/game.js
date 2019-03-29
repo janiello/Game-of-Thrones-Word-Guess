@@ -6,14 +6,12 @@ var wordList = ["WESTEROS", "STARK", "DRAGONS", "THE MOUNTAIN", "TARGARYEN", "NI
 // Then I "grab" the element in the html to which I want the word to go.
 var newWord = document.getElementById("random-word");
 
-// Provide a function to take a random word from the list and put it into the "empty element" upon the keystroke.
+// Provide a function to take a random word from the list.
 function randomWord() {
-    return Math.floor(Math.random() * wordList.length);
+    return wordList[Math.floor(Math.random() * wordList.length)];
 };
 
-console.log(randomWord);
-
-// Have the computer choose a random word for the user to guess. 
+newWord.textContent = randomWord(); 
 
 // Hide the word with "_ _ _ _ _" until the corect letters are guessed.
 
