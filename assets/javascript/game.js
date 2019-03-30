@@ -1,7 +1,7 @@
 // Show the directions before starting the game. 
 
-// Press the space bar to start. First I need a list of words.
-var wordList = ["WESTEROS", "STARK", "DRAGONS", "THE MOUNTAIN", "TARGARYEN", "NIGHT'S WATCH", "KHALEESI", "LANNISTER", "WHITE WALKERS", "BARATHEON"];
+// First I need a list of words.
+var wordList = ["WESTEROS", "STARK", "DRAGONS", "BRAVOS", "TARGARYEN", "WILDLINGS", "KHALEESI", "LANNISTER", "WINTERFELL", "BARATHEON"];
 
 // Then I "grab" the element in the html to which I want the word to go.
 var newWord = document.getElementById("random-word");
@@ -13,10 +13,12 @@ function randomWord() {
 
 // Hide the word with "_ _ _ _ _" until the corect letters are guessed.
 for (var w = 0; w < randomWord().length; w++) {
-    document.write(" __ ")
-}
+    newWord.textContent += (" __ ")
+};
 
-// Keep a count for number of guesses remaining. 
+// Generate a new word with a key event instead of reloading the page to get a new word.
+
+// Keep a count for number of guesses remaining.
 
 // Keep a record of which letters have been guessed.
 
@@ -24,11 +26,11 @@ for (var w = 0; w < randomWord().length; w++) {
 
     // If the user guesses correctly, change the corresponding blank space to the correctly geussed letter.
 
-    // If the user guesses incorrectly, reduce the number of guesses by 1.
+    // If the user guesses incorrectly, reduce the number of guesses by 1 using a for loop and counter variables.
     
-    // Add the guessed letter to the "letters guessed" list.
+    // Add the guessed letter to the "letters guessed" list. This might take a push function.
 
-        // Once a letter has been guessed, correctly or not, typing that letter again will do nothing.
+        // Once a letter has been guessed, correctly or not, typing that letter again should stop an iteration or function.
 
     // If the user guesses all letters correctly, show a message that with the word and an image related to it.
 
