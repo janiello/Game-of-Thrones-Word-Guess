@@ -12,11 +12,16 @@ function randomWord() {
 };
 
 // Hide the word with "_ _ _ _ _" until the corect letters are guessed.
-for (var w = 0; w < randomWord().length; w++) {
-    newWord.textContent += (" __ ")
-};
-
+function makeBlanks() {
+    for (var w = 0; w < randomWord().length; w++) {
+        newWord.textContent += (" __ ")
+    };
+}
 // Generate a new word with a key event instead of reloading the page to get a new word.
+document.onkeypress = function(event) {
+    makeBlanks() = event.key;
+}
+    // This key event now generates a new, unknown word each time a key is pressed, but adds it to the word that is already there instead of replacing it.
 
 // Keep a count for number of guesses remaining.
 
