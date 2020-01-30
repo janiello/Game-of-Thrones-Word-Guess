@@ -70,13 +70,16 @@ document.onkeyup = function(event) {
     var userGuess = event.key.toUpperCase();
     // If the user guesses correctly, change the corresponding blank space to the correctly geussed letter
     
-    // If the user guesses incorrectly, push the guessed letter to the lettersGuessed array
+    // If the user guesses incorrectly, push the guessed letter to the lettersGuessed array and render them to the page (second part to an if/else statement, should begin with "} else {")
     lettersGuessed.push(userGuess);
     wrongLetters();
+    // Decrement the amount of guesses remaining and render them to the page
+    guesses--;
+    updateGuesses();
     
     // If enough letters are guessed incorrectly...
     if (guesses === 0) {
-        // Guesses reset
+        // Amount of remaining guesses reset
         guesses = 10;
         // Incorrectly guessed letters array empties
         lettersGuessed = [];
