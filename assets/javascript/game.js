@@ -1,7 +1,7 @@
 // First I need a list of words
-var wordList = ["WETSEROS", "STARK", "DRAGONS", "BRAVOS", "TARGARYEN", "WILDLINGS", "KHALEESI", "LANNISTER", "WINTERFELL", "BARATHEON"];
+var wordList = ["WESTEROS", "STARK", "DRAGONS", "BRAVOS", "TARGARYEN", "WILDLINGS", "KHALEESI", "LANNISTER", "WINTERFELL", "BARATHEON"];
 
-// Assign the HTML elements where I want certain things to appear (or disappear) to different variables
+// Assign the HTML elements where I want certain things to appear to different variables
 var word = document.getElementById("word");
 var winsText = document.getElementById("wins");
 var guessesText = document.getElementById("guesses");
@@ -11,40 +11,20 @@ var lettersText = document.getElementById("letters");
 var wins = 0;
 var guesses = 10;
 
-// Generate a random word from the array of available words on page load
-var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-
-// Display that random word in the correct HTML element, along with wins, number of guesses, and letters guessed info, and log the actual word in the console
-word.textContent = randomWord;
-winsText.textContent = "Wins: " + wins;
-guessesText.textContent = "Number of Guesses Left: " + guesses;
-lettersText.textContent = "Letters Already Guessed: ";
-console.log(randomWord);
-
-// Hide the word with "_ _ _ _ _" until the corect letters are guessed.
-/*var blanks = " _ "
-var hiddenWord = randomWord.replace(/[a-z]/g, blanks);*/
-
-
 // Create an empty array which will ultimately contain incorrectly guessed letters
 var lettersGuessed = [];
 
-// Create a keypress event for the "start game" and letter guessing functionlity
-document.onkeyup = function(event) {
-    // I need a variable that takes in whatever letter the user guesses
-    var userGuess = event.key.toUpperCase();
-    console.log(userGuess)
-    // Loop through the random word to check against the userGuess
-    for (var i = 0; i < randomWord.length; i++) {
-        // If the user guesses correctly, change the corresponding blank space to the correctly geussed letter
-        if (userGuess === randomWord[i]) {
-            console.log("correct");
-        } else {
-        // If the user guesses incorrectly, push the guessed letter to the lettersGuessed array
-            console.log("try again");
-        // And reduce the number of guesses by 1 using a for loop and counter variables
-        }
-    };
+// Generate a random word from the array of available words on page load
+/*function randomWord() {
+    return wordList[Math.floor(Math.random() * wordList.length)]
+};*/
+function randomWord() {
+    return wordList[Math.floor(Math.random() * wordList.length)];
+}
+
+// Create a function that can be called to display a new word to the right html element
+function newWord() {
+    word.textContent = randomWord();
 };
 
 // Alternate code for keypress event
@@ -57,14 +37,52 @@ document.onkeyup = function(event) {
     };
     */
 
-// Keep a count for number of guesses remaining.
+// Create a function to update wins if the user guesses the word correctly
+function updateWins() {
+    winsText.textContent = "Wins: " + wins
+};
 
-// Keep a record of which letters have been guessed.
+// Create a function that updates the number of guesses whenever the user guesses incorrectly
+function updateGuesses() {
+    guessesText.textContent = "Number of Guesses Left: " + guesses
+};
 
-// Once a letter has been guessed, correctly or not, typing that letter again should stop an iteration or function.
+// Function that updates which letters have been incorrectly guessed
+function wrongLetters() {
+    lettersText.textContent = "Letters Already Guessed: " + lettersGuessed
+};
 
-// If the user guesses all letters correctly, show a message that with the word and an image related to it.
+// Call the above functions so everything is displayed when the page is loaded
+newWord();
+updateWins();
+updateGuesses();
+wrongLetters();
 
-// If the user does not solve the puzzle and uses all their guesses, display a message like "Bring me their head!" and an image of Ned Stark or Joffrey.
+// Hide the word with "_ _ _ _ _" until the corect letters are guessed.
+/*var blanks = " _ "
+var hiddenWord = randomWord.replace(/[a-z]/g, blanks);*/
 
-// Press space to start a new round.
+
+
+// Create a keypress event for the "start game" and letter guessing functionlity
+document.onkeyup = function(event) {
+    // I need a variable that takes in whatever letter the user guesses
+    var userGuess = event.key.toUpperCase();
+    // If the user guesses correctly, change the corresponding blank space to the correctly geussed letter
+    
+    // If the user guesses incorrectly, push the guessed letter to the lettersGuessed array
+    lettersGuessed.push(userGuess);
+    wrongLetters();
+    
+    // If enough letters are guessed incorrectly...
+    if (guesses === 0) {
+        // Guesses reset
+        guesses = 10;
+        // Incorrectly guessed letters array empties
+        lettersGuessed = [];
+        // Functions are called to render info to the page and start a new game
+        updateGuesses();
+        wrongLetters();
+        newWord();
+    };
+};
