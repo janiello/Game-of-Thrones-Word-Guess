@@ -107,16 +107,36 @@ document.onkeyup = function(event) {
         // Log out the userGuess for reference
         console.log(userGuess)
     } else {
-        // If the user guesses incorrectly, push the guessed letter to the wrongGuesses array and render them to the page (second part to an if/else statement, should begin with "} else {")
+        // If the user guesses incorrectly, push the guessed letter to the wrongGuesses array and render them to the page
         wrongGuesses.push(userGuess);
         wrongLetters();
         // Decrement the amount of guesses remaining and render them to the page
         guesses--;
         updateGuesses();
     }
+
+    // If the user guesses all the letters correctly (we use the toString method because each random letter guess needs to be organized into an actual word)
+    if (lettersInWord.toString() === blanksAndSuccesses.toString()) {
+        // Alert the User that they won
+        // Later I will add a different message for winning depending on the word
+        alert("Victory! Winter has passed!");
+        // Increment wins counter
+        wins++;
+        // Reset the number of Guesses
+        guesses = 10;
+        // Reset the incorrect letters array
+        wrongGuesses = [];
+        // Run the functions to render appropriate info the page
+        updateWins();
+        updateGuesses();
+        wrongLetters();
+        newWord();
+    }
     
     // If enough letters are guessed incorrectly...
-    if (guesses === 0) {
+    else if (guesses === 0) {
+        // Alert the user they lost
+        alert("And now your watch is ended.");
         // Increment losses by 1
         losses++;
         // Amount of remaining guesses reset
