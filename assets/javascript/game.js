@@ -106,6 +106,7 @@ document.onkeyup = function(event) {
         }
         // Log out the userGuess for reference
         console.log(userGuess)
+        word.textContent = blanksAndSuccesses.join(" ");
     } else {
         // If the user guesses incorrectly, push the guessed letter to the wrongGuesses array and render them to the page
         wrongGuesses.push(userGuess);
@@ -119,7 +120,7 @@ document.onkeyup = function(event) {
     if (lettersInWord.toString() === blanksAndSuccesses.toString()) {
         // Alert the User that they won
         // Later I will add a different message for winning depending on the word
-        alert("Victory! Winter has passed!");
+        alert("Victory! Winter has passed!\n" + "Word: " + randomWord);
         // Increment wins counter
         wins++;
         // Reset the number of Guesses
