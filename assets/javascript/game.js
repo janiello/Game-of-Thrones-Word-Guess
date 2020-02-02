@@ -120,7 +120,7 @@ document.onkeyup = function(event) {
     if (lettersInWord.toString() === blanksAndSuccesses.toString()) {
         // Alert the User that they won
         // Later I will add a different message for winning depending on the word
-        alert("Victory! Winter has passed!\n" + "Word: " + randomWord);
+        alert("Victory! Winter has passed!\n" + "Word was: " + randomWord);
         // Increment wins counter
         wins++;
         // Reset the number of Guesses
