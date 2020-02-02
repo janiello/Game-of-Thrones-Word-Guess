@@ -137,7 +137,7 @@ document.onkeyup = function(event) {
     // If enough letters are guessed incorrectly...
     else if (guesses === 0) {
         // Alert the user they lost
-        alert("And now your watch is ended.");
+        alert("And now your watch is ended.\n" + "Word was: " + randomWord);
         // Increment losses by 1
         losses++;
         // Amount of remaining guesses reset
